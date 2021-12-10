@@ -1,2 +1,3 @@
-# vue-jsx-runtime
-jsx-runtime for vue
+# @vue/jsx-runtime
+
+Internal jsx runtime support.
