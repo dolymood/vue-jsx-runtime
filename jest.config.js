@@ -13,8 +13,8 @@ module.exports = {
   testEnvironment: 'jsdom',
   setupFiles: ['./jest-setup.ts'],
   moduleNameMapper: {
-    "vue/jsx-runtime": ["<rootDir>"],
-    "vue/jsx-dev-runtime": ["<rootDir>"]
+    "vue/jsx-runtime": ["<rootDir>/src"],
+    "vue/jsx-dev-runtime": ["<rootDir>/src"]
   },
   transform: {
     '\\.(ts|tsx)$': 'ts-jest',
