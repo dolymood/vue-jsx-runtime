@@ -1,4 +1,3 @@
-// import { __DEV__ } from './env'
 import {
   VNodeTypes,
   createVNode,
@@ -11,9 +10,16 @@ import {
   vModelText,
   vModelSelect,
   vModelDynamic,
-  isVNode,
+  isVNode
 } from 'vue'
-import { hasOwn, isFunction, isString, isArray, isSymbol, isObject } from '@vue/shared'
+
+const hasOwnProperty = Object.prototype.hasOwnProperty
+const hasOwn = (val: object, key: string) => hasOwnProperty.call(val, key)
+const isFunction = (val: any) => typeof val === 'function'
+const isString = (val: any) => typeof val === 'string'
+const isSymbol = (val: any) => typeof val === 'symbol'
+const isObject = (val: any) => val !== null && typeof val === 'object'
+const isArray = Array.isArray
 
 const vModelEleDirTypes = {
   select: vModelSelect,

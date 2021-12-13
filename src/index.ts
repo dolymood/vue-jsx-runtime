@@ -1,4 +1,3 @@
-import { __DEV__ } from './env'
 import { Fragment } from 'vue'
 import { jsx as prodJsx, jsxs as prodJsxs } from './jsx'
 import {

@@ -1,5 +1,3 @@
-// todo dev mode
-import { __DEV__ } from './env'
 import { VNodeTypes } from 'vue'
 import { jsx } from './jsx'
 

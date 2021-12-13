@@ -2,13 +2,42 @@
   "name": "vue-jsx-runtime",
   "version": "0.0.1",
   "description": "jsx runtime support",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "jsx-runtime.js",
+  "module": "dist/vue-jsx-runtime.mjs",
+  "unpkg": "dist/vue-jsx-runtime.iife.prod.js",
+  "jsdelivr": "dist/vue-jsx-runtime.iife.prod.js",
+  "types": "dist/vue-jsx-runtime.d.ts",
+  "exports": {
+    ".": {
+      "browser": "./dist/vue-jsx-runtime.esm-browser.js",
+      "node": {
+        "import": {
+          "production": "./dist/vue-jsx-runtime.prod.cjs",
+          "development": "./dist/vue-jsx-runtime.mjs",
+          "default": "./dist/vue-jsx-runtime.mjs"
+        },
+        "require": {
+          "production": "./dist/vue-jsx-runtime.prod.cjs",
+          "development": "./dist/vue-jsx-runtime.cjs",
+          "default": "./index.js"
+        }
+      },
+      "import": "./dist/vue-jsx-runtime.mjs"
+    },
+    "./jsx-runtime": "./jsx-runtime.js",
+    "./jsx-dev-runtime": "./jsx-dev-runtime.js",
+    "./package.json": "./package.json",
+    "./dist/*": "./dist/*"
+  },
+  "sideEffects": false,
   "scripts": {
-    "build": "rm -rf dist && tsc",
-    "watch": "rm -rf dist && tsc --watch",
-    "test": "pnpm build && pnpm test:only",
-    "test:only": "jest --coverage"
+    "bootstrap": "pnpm install --shamefully-hoist",
+    "release": "pnpm test && pnpm build && pnpm publish --access=public",
+    "build": "rm -rf dist && pnpm build:js && pnpm build:dts",
+    "build:js": "rollup -c ./rollup.config.js",
+    "build:dts": "api-extractor run --local --verbose",
+    "test": "pnpm test:unit",
+    "test:unit": "jest --coverage"
   },
   "files": [
     "dist",
@@ -36,11 +65,19 @@
     "@babel/core": "^7.16.0",
     "@babel/plugin-transform-react-jsx": "^7.16.0",
     "@babel/preset-env": "^7.16.4",
+    "@microsoft/api-extractor": "^7.19.2",
+    "@rollup/plugin-alias": "^3.1.8",
+    "@rollup/plugin-commonjs": "^21.0.1",
+    "@rollup/plugin-node-resolve": "^13.1.1",
+    "@rollup/plugin-replace": "^3.0.0",
     "@types/jest": "^27.0.3",
     "@vue/shared": "^3.2.24",
     "@vue/test-utils": "2.0.0-beta.2",
     "jest": "^27.4.4",
     "regenerator-runtime": "^0.13.9",
+    "rollup": "^2.61.1",
+    "rollup-plugin-terser": "^7.0.2",
+    "rollup-plugin-typescript2": "^0.31.1",
     "ts-jest": "^27.1.1",
     "typescript": "^4.5.3",
     "vue": "^3.2.24"

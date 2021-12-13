@@ -8,3 +8,5 @@ declare module 'vue/jsx-dev-runtime' {
   export const jsxs: Function
   export const jsxDEV: Function
 }
+
+declare var __DEV__: boolean
