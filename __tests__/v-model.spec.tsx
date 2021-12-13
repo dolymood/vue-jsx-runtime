@@ -2,6 +2,8 @@
 import { shallowMount, mount } from '@vue/test-utils'
 import { defineComponent, VNode, ref } from 'vue'
 
+// v-model={[context, path, arg, modifers]}
+
 test('input[type="checkbox"] should work', async () => {
   const wrapper = shallowMount({
     data() {
