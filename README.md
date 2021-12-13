@@ -7,6 +7,7 @@ The background https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-trans
 TODO:
 
 - optimize, transformOn ...
+- dev validation
 - more features
 
 ## Installation
