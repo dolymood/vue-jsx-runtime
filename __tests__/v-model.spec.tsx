@@ -1,6 +1,6 @@
 // use https://github.com/vuejs/jsx-next/tree/dev/packages/babel-plugin-jsx test cases
 import { shallowMount, mount } from '@vue/test-utils'
-import { defineComponent, VNode } from 'vue'
+import { defineComponent, VNode, ref } from 'vue'
 
 test('input[type="checkbox"] should work', async () => {
   const wrapper = shallowMount({
@@ -10,15 +10,7 @@ test('input[type="checkbox"] should work', async () => {
       }
     },
     render() {
-      const model = {
-        get: () => {
-          return this.test
-        },
-        set: (val: boolean) => {
-          this.test = val
-        }
-      }
-      return <input type="checkbox" v-model={model}/>
+      return <input type="checkbox" v-model={[this, 'test']} />
     },
   }, {
     // fix jsdom https://github.com/jsdom/jsdom/commit/1da0a4c1f4a0e9f8fa5576a9c5e2897b8307f7ab
@@ -36,26 +28,18 @@ test('input[type="checkbox"] should work', async () => {
 })
 
 test('input[type="radio"] should work', async () => {
+  const test = ref('1')
   const wrapper = mount({
-    data: () => ({
-      test: '1',
-    }),
-    render() {
-      const model = {
-        get: () => {
-          return this.test
-        },
-        set: (val: string) => {
-          this.test = val
-        }
+    setup() {
+      return () => {
+        return (
+          <>
+            <input type="radio" value="1" v-model={test} name="test" />
+            <input type="radio" value="2" v-model={test} name="test" />
+          </>
+        )
       }
-      return (
-        <>
-          <input type="radio" value="1" v-model={model} name="test" />
-          <input type="radio" value="2" v-model={model} name="test" />
-        </>
-      )
-    },
+    }
   }, {
     // fix jsdom https://github.com/jsdom/jsdom/commit/1da0a4c1f4a0e9f8fa5576a9c5e2897b8307f7ab
     attachTo: document.body
@@ -64,14 +48,16 @@ test('input[type="radio"] should work', async () => {
   const [a, b] = wrapper.vm.$.subTree.children as VNode[]
 
   expect(a.el!.checked).toBe(true)
-  wrapper.vm.test = '2'
+  // wrapper.vm.test = '2'
+  test.value = '2'
   await wrapper.vm.$nextTick()
   expect(a.el!.checked).toBe(false)
   expect(b.el!.checked).toBe(true)
   await a.el!.click()
   expect(a.el!.checked).toBe(true)
   expect(b.el!.checked).toBe(false)
-  expect(wrapper.vm.test).toBe('1')
+  // expect(wrapper.vm.test).toBe('1')
+  expect(test.value).toBe('1')
 })
 
 test('select should work with value bindings', async () => {
@@ -80,12 +66,8 @@ test('select should work with value bindings', async () => {
       test: 2,
     }),
     render() {
-      const model = {
-        get: () => this.test,
-        set: (val: number) => this.test = val
-      }
       return (
-        <select v-model={model}>
+        <select v-model={[this, 'test']}>
           <option value="1">a</option>
           <option value={2}>b</option>
           <option value={3}>c</option>
@@ -118,11 +100,7 @@ test('textarea should update value both ways', async () => {
       test: 'b',
     }),
     render() {
-      const model = {
-        get: () => this.test,
-        set: (val: string) => this.test = val
-      }
-      return <textarea v-model={model} />
+      return <textarea v-model={[this, 'test']} />
     },
   })
   const el = wrapper.vm.$el
@@ -142,11 +120,7 @@ test('input[type="text"] should update value both ways', async () => {
       test: 'b',
     }),
     render() {
-      const model = {
-        get: () => this.test,
-        set: (val: string) => this.test = val
-      }
-      return <input v-model={model} />
+      return <input v-model={[this, 'test']} />
     },
   })
   const el = wrapper.vm.$el
@@ -166,12 +140,7 @@ test('input[type="text"] .lazy modifier', async () => {
       test: 'b',
     }),
     render() {
-      const model = {
-        get: () => this.test,
-        set: (val: string) => this.test = val,
-        modifiers: ['lazy']
-      }
-      return <input v-model={model} />
+      return <input v-model={[this, 'test', ['lazy']]} />
     },
   })
   const el = wrapper.vm.$el
@@ -195,11 +164,7 @@ test('dynamic type should work', async () => {
       }
     },
     render() {
-      const model = {
-        get: () => this.test,
-        set: (val: boolean) => this.test = val
-      }
-      return <input type={this.type} v-model={model} />
+      return <input type={this.type} v-model={[this, 'test']} />
     },
   })
 
@@ -215,12 +180,7 @@ test('underscore modifier should work', async () => {
       test: 'b',
     }),
     render() {
-      const model = {
-        get: () => this.test,
-        set: (val: string) => this.test = val,
-        modifiers: ['lazy']
-      }
-      return <input v-model={model} />
+      return <input v-model={[this, 'test', ['lazy']]} />
     },
   })
   const el = wrapper.vm.$el
@@ -268,12 +228,7 @@ test('underscore modifier should work in custom component', async () => {
       }
     },
     render() {
-      const model = {
-        get: () => this.foo,
-        set: (val: number) => this.foo = val,
-        modifiers: ['double']
-      }
-      return <Child v-model={model} />
+      return <Child v-model={[this, 'foo', ['double']]} />
     },
   })
 
@@ -309,12 +264,7 @@ test('Named model', async () => {
       foo: 0,
     }),
     render() {
-      const model = {
-        get: () => this.foo,
-        set: (val: number) => this.foo = val,
-        prop: 'value'
-      }
-      return <Child v-model={ model } />
+      return <Child v-model:value={ [this, 'foo'] } />
     },
   })
 
