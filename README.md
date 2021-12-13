@@ -82,7 +82,7 @@ If you use some tool which support jsx-runtime, like [swc](https://swc.rs/), you
 
 More details, see https://swc.rs/docs/configuration/compilation#jsctransformreact
 
-About [esbuild](https://github.com/evanw/esbuild/), see https://github.com/evanw/esbuild/issues/1172 and a hack way https://github.com/evanw/esbuild/issues/832 .
+About [esbuild](https://github.com/evanw/esbuild/), see https://github.com/evanw/esbuild/issues/1172 and a hack way https://github.com/evanw/esbuild/issues/832 . https://github.com/evanw/esbuild/issues/334#issuecomment-711444731 .
 
 ## Syntax
 
