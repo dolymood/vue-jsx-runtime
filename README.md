@@ -4,6 +4,11 @@ Vue 3 jsx runtime support.
 
 The background https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html . With new jsx runtime support, which means a JSX ast standard, every lib can have its own jsx grammar with small limits.
 
+TODO:
+
+- optimize, transformOn ...
+- more features
+
 ## Installation
 
 Install the plugin with:
