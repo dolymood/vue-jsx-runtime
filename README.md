@@ -1,4 +1,4 @@
-# vue-jsx-runtime
+# vue-jsx-runtime [![npm](https://badgen.net/npm/v/vue-jsx-runtime)](https://www.npmjs.com/package/vue-jsx-runtime) [![build status](https://github.com/dolymood/vue-jsx-runtime/workflows/test/badge.svg)](https://github.com/dolymood/vue-jsx-runtime/actions/workflows/test.yml) [![coverage](https://badgen.net/codecov/c/github/dolymood/vue-jsx-runtime)](https://codecov.io/github/dolymood/vue-jsx-runtime)
 
 Vue 3 jsx runtime support.
 
