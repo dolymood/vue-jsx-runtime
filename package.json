@@ -8,10 +8,7 @@
     "build": "rm -rf dist && tsc",
     "watch": "rm -rf dist && tsc --watch",
     "test": "pnpm build && pnpm test:only",
-    "test:clear": "jest --clearCache",
-    "test:only": "jest --coverage",
-    "test:debug": "jest --runInBand",
-    "test:snapshot": "jest --updateSnapshot"
+    "test:only": "jest --coverage"
   },
   "files": [
     "dist",
