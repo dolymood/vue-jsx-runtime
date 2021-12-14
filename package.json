@@ -1,7 +1,7 @@
 {
   "name": "vue-jsx-runtime",
   "version": "0.1.0",
-  "description": "jsx runtime support",
+  "description": "vue jsx runtime support",
   "main": "index.js",
   "module": "dist/vue-jsx-runtime.mjs",
   "unpkg": "dist/vue-jsx-runtime.iife.prod.js",
