@@ -239,8 +239,6 @@ const App = {
 
 ### Slot
 
-> Note: In `jsx`, _`v-slot`_ should be replace with **`v-slots`**
-
 #### Recommend
 
 Use object slots:
@@ -271,6 +269,8 @@ const App = {
 ```
 
 #### Use v-slots
+
+> Note: In `jsx`, _`v-slot`_ should be replace with **`v-slots`**
 
 ```jsx
 const App = {
