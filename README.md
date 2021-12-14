@@ -6,14 +6,10 @@ The background https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-trans
 
 TODO:
 
-- optimize, transformOn ...
+- optimize, transformOn, isCustomElement ...
 - dev validation
+- more tests
 - more features
-
-Diffent with https://github.com/vuejs/jsx-next
-
-- `jsx-next` is a plugin for `Babel` only.
-- `vue-jsx-runtime` can be used with `Babel`, `TypeScript`, `swc`, `esbuild` and more.
 
 ## Installation
 
@@ -294,3 +290,13 @@ const App = {
   },
 };
 ```
+
+## Different with [vue jsx-next](https://github.com/vuejs/jsx-next)
+
+- `jsx-next` is a plugin for `Babel` only.
+- `vue-jsx-runtime` can be used with `Babel`, `TypeScript`, `swc`, `esbuild` and more.
+
+`vue-jsx-runtime` limits:
+
+- can not merge ele/component props
+- `v-model` syntax is little different with `jsx-next` - `v-model`
