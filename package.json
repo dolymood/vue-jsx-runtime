@@ -2,7 +2,7 @@
   "name": "vue-jsx-runtime",
   "version": "0.0.1",
   "description": "jsx runtime support",
-  "main": "jsx-runtime.js",
+  "main": "index.js",
   "module": "dist/vue-jsx-runtime.mjs",
   "unpkg": "dist/vue-jsx-runtime.iife.prod.js",
   "jsdelivr": "dist/vue-jsx-runtime.iife.prod.js",
@@ -24,8 +24,38 @@
       },
       "import": "./dist/vue-jsx-runtime.mjs"
     },
-    "./jsx-runtime": "./jsx-runtime.js",
-    "./jsx-dev-runtime": "./jsx-dev-runtime.js",
+    "./jsx-runtime": {
+			"browser": "./dist/vue-jsx-runtime.esm-browser.js",
+      "node": {
+        "import": {
+          "production": "./dist/vue-jsx-runtime.prod.cjs",
+          "development": "./dist/vue-jsx-runtime.mjs",
+          "default": "./dist/vue-jsx-runtime.mjs"
+        },
+        "require": {
+          "production": "./dist/vue-jsx-runtime.prod.cjs",
+          "development": "./dist/vue-jsx-runtime.cjs",
+          "default": "./index.js"
+        }
+      },
+      "import": "./dist/vue-jsx-runtime.mjs"
+		},
+		"./jsx-dev-runtime": {
+			"browser": "./dist/vue-jsx-runtime.esm-browser.js",
+      "node": {
+        "import": {
+          "production": "./dist/vue-jsx-runtime.prod.cjs",
+          "development": "./dist/vue-jsx-runtime.mjs",
+          "default": "./dist/vue-jsx-runtime.mjs"
+        },
+        "require": {
+          "production": "./dist/vue-jsx-runtime.prod.cjs",
+          "development": "./dist/vue-jsx-runtime.cjs",
+          "default": "./index.js"
+        }
+      },
+      "import": "./dist/vue-jsx-runtime.mjs"
+		},
     "./package.json": "./package.json",
     "./dist/*": "./dist/*"
   },
