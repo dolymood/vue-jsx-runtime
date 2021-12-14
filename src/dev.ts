@@ -8,6 +8,7 @@ export function jsxDEV(
   source?: object,
   self?: any
 ) {
+  // istanbul ignore next
   if (__DEV__) {
     return jsx(type, config, maybeKey, source, self)
   }
@@ -21,10 +22,10 @@ export function jsxWithValidation(
   source?: object,
   self?: any
 ) {
-  // todo
   return jsxDEV(type, props, key, source, self)
 }
 
+// istanbul ignore next
 export function jsxWithValidationStatic(
   type: VNodeTypes,
   props: Record<string, any> = {},
@@ -35,6 +36,7 @@ export function jsxWithValidationStatic(
   }
 }
 
+// istanbul ignore next
 export function jsxWithValidationDynamic(
   type: VNodeTypes,
   props: Record<string, any> = {},
