@@ -4,6 +4,12 @@ Vue 3 jsx runtime support.
 
 The background https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html . With new jsx runtime support, which means a JSX ast standard, every lib can have its own jsx syntax with small limits.
 
+[Examples](https://github.com/dolymood/vue-jsx-runtime-examples) with TS:
+
+- [vite](https://github.com/dolymood/vue-jsx-runtime-examples/tree/main/vite) with esbuild usage
+- [vue-cli](https://github.com/dolymood/vue-jsx-runtime-examples/tree/main/vue-cli) with babel usage
+- [swc](https://github.com/dolymood/vue-jsx-runtime-examples/tree/main/swc)
+
 TODO:
 
 - optimize, transformOn, isCustomElement ...
