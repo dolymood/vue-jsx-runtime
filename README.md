@@ -10,14 +10,19 @@ TODO:
 - dev validation
 - more features
 
+Diffent with https://github.com/vuejs/jsx-next
+
+- `jsx-next` is a plugin for `Babel` only.
+- `vue-jsx-runtime` can be used with `Babel`, `TypeScript`, `swc`, `esbuild` and more.
+
 ## Installation
 
 Install the plugin with:
 
 ```bash
-pnpm add vue-jsx-runtime -D
+pnpm add vue-jsx-runtime
 # or
-npm install vue-jsx-runtime -D
+npm install vue-jsx-runtime
 ```
 
 ## Usage
