@@ -1,5 +1,6 @@
 import {
   VNodeTypes,
+  DirectiveArguments,
   createVNode,
   toDisplayString,
   resolveDirective,
@@ -21,12 +22,12 @@ const isSymbol = (val: any) => typeof val === 'symbol'
 const isObject = (val: any) => val !== null && typeof val === 'object'
 const isArray = Array.isArray
 
-const vModelEleDirTypes = {
+const vModelEleDirTypes: Record<string, any> = {
   select: vModelSelect,
   textarea: vModelText
 }
 
-const vModelDirTypes = {
+const vModelDirTypes: Record<string, any> = {
   default: vModelText,
   radio: vModelRadio,
   checkbox: vModelCheckbox,
@@ -69,11 +70,8 @@ const DIR_CASES: Record<string, PropHandler> = {
     const fixModifiersKey = `${fixProp}Modifiers`
     props[fixModifiersKey] = modifiers
 
-    // @ts-ignore
     props[`onUpdate:${prop}`] = set
-    // @ts-ignore
-    const eleDir = vModelEleDirTypes[type]
-    // @ts-ignore
+    const eleDir = vModelEleDirTypes[type as string]
     const typeDir = (isString(config.type) || !config.type) ? (vModelDirTypes[config.type] || vModelDirTypes.default) : vModelDirTypes.dynamic
     const directiveName = eleDir || typeDir
     directives.push([
@@ -163,7 +161,7 @@ export function jsx(
   self?: any
 ) {
   let propName: string
-  const directives:Array<any[]> = []
+  const directives: DirectiveArguments = []
 
   const props: Record<string, any> = {}
 
@@ -209,7 +207,6 @@ export function jsx(
   }
   const vnode = createVNode(type, props, children)
   if (directives.length) {
-    // @ts-ignore
     return withDirectives(vnode, directives)
   }
   return vnode
