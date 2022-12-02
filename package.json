@@ -7,6 +7,12 @@
   "unpkg": "dist/vue-jsx-runtime.iife.prod.js",
   "jsdelivr": "dist/vue-jsx-runtime.iife.prod.js",
   "types": "dist/vue-jsx-runtime.d.ts",
+  "typesVersions": {
+    "*": {
+      "jsx-runtime": ["./dist/vue-jsx-runtime.d.ts"],
+      "jsx-dev-runtime": ["./dist/vue-jsx-runtime.d.ts"]
+    }
+  },
   "exports": {
     ".": {
       "browser": "./dist/vue-jsx-runtime.esm-browser.js",
